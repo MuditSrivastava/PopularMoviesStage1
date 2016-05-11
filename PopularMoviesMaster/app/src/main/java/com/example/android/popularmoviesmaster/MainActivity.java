@@ -30,10 +30,20 @@ import retrofit.client.Response;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private MoviesAdapter mAdapter;
-
+    boolean b;
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(!isNetworkAvailable()){
+            {Toast toast = Toast.makeText(this,"Internet Connection required to run this app properly", Toast.LENGTH_LONG);
+                toast.show();}
+        }
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -81,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         boolean is_popular;
         is_popular=mAdapter.isPopular(this);
         if(is_popular)
-        {
+        {   b=true;
             service.getPopularMovies(new Callback<Movie.MovieResult>() {
                 @Override
                 public void success(Movie.MovieResult movieResult, Response response) {
@@ -90,11 +100,18 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void failure(RetrofitError error) {
+
                     error.printStackTrace();
+                    if (b) {
+                        Toast toast = Toast.makeText(getApplicationContext(), "Something Went Wrong!", Toast.LENGTH_SHORT);
+                        toast.show();
+                        b = false;
+                    }
                 }
             });
         }
             else {
+            b=true;
             service.getRatedMovies(new Callback<Movie.MovieResult>() {
                 @Override
                 public void success(Movie.MovieResult movieResult, Response response) {
@@ -104,6 +121,11 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void failure(RetrofitError error) {
                     error.printStackTrace();
+                    if (b) {
+                        Toast toast = Toast.makeText(getApplicationContext(), "Something Went Wrong!", Toast.LENGTH_SHORT);
+                        toast.show();
+                        b = false;
+                    }
                 }
             });
         }
