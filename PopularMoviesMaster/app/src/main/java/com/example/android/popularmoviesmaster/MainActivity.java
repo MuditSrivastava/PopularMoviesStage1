@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
 import retrofit.Callback;
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
@@ -62,7 +63,9 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         mAdapter = new MoviesAdapter(this);
-        mRecyclerView.setAdapter(mAdapter);
+        ScaleInAnimationAdapter scaleAdapter = new ScaleInAnimationAdapter(mAdapter);
+        scaleAdapter.setFirstOnly(false);
+        mRecyclerView.setAdapter(scaleAdapter);
         List<Movie> movies = new ArrayList<>();
 
         for (int i = 0; i < 25; i++) {
@@ -85,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 .setRequestInterceptor(new RequestInterceptor() {
                     @Override
                     public void intercept(RequestFacade request) {
-                        request.addEncodedQueryParam("api_key", "Write_your_key_here");
+                        request.addEncodedQueryParam("api_key", "paste_your_key_here");
                     }
                 })
                 .setLogLevel(RestAdapter.LogLevel.FULL)
