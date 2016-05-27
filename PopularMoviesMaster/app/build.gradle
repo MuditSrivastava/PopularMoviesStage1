@@ -17,6 +17,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    buildTypes.each{
+        it.buildConfigField 'String', 'MOBDB_API_KEY',"\"paste_your_key_here\""
+    }
 }
 
 dependencies {

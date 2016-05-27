@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 .setRequestInterceptor(new RequestInterceptor() {
                     @Override
                     public void intercept(RequestFacade request) {
-                        request.addEncodedQueryParam("api_key", "paste_your_key_here");
+                        request.addEncodedQueryParam("api_key", BuildConfig.MOBDB_API_KEY);
                     }
                 })
                 .setLogLevel(RestAdapter.LogLevel.FULL)
