@@ -21,10 +21,8 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-
 import java.util.ArrayList;
 import java.util.List;
-
 
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
 import retrofit.Callback;
@@ -56,24 +54,23 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_View);
         mRecyclerView.setHasFixedSize(true);
-
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-
         mAdapter = new MoviesAdapter(this);
+
         ScaleInAnimationAdapter scaleAdapter = new ScaleInAnimationAdapter(mAdapter);
         scaleAdapter.setFirstOnly(false);
+
         mRecyclerView.setAdapter(scaleAdapter);
         List<Movie> movies = new ArrayList<>();
 
         for (int i = 0; i < 25; i++) {
             movies.add(new Movie());
         }
+
         mAdapter.setMovieList(movies);
         getMov();
-
     }
     @Override
     public void onStart()
@@ -94,14 +91,11 @@ public class MainActivity extends AppCompatActivity {
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .build();
         ApiJava service = restAdapter.create(ApiJava.class);
-
-
-
-
         boolean is_popular;
         is_popular=mAdapter.isPopular(this);
         if(is_popular)
-        {   b=true;
+        {
+            b=true;
             service.getPopularMovies(new Callback<Movie.MovieResult>() {
                 @Override
                 public void success(Movie.MovieResult movieResult, Response response) {
@@ -153,12 +147,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-
         if (id == R.id.action_settings) {
             startActivity(new Intent(this,SettingsActivity.class));
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -171,8 +163,6 @@ public class MainActivity extends AppCompatActivity {
             imageView = (ImageView) itemView.findViewById(R.id.image_view);
         }
     }
-
-
     public static class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder>
     {
         private List<Movie> mMovieList;

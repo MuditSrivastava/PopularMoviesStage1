@@ -113,7 +113,6 @@ public class Movie implements Parcelable {
 
     public static class MovieResult {
         private List<Movie> results;
-
         public List<Movie> getResults() {
             return results;
         }

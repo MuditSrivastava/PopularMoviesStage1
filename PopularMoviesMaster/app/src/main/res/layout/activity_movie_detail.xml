@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay">
+
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
             android:fitsSystemWindows="true"
@@ -20,6 +21,7 @@
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:contentScrim="?attr/colorPrimary">
+
             <ImageView
                 android:id="@+id/backdrop"
                 android:fitsSystemWindows="true"
@@ -38,6 +40,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_movie_detail"/>
+        <include layout="@layout/content_movie_detail"/>
 
-    </android.support.design.widget.CoordinatorLayout>
+</android.support.design.widget.CoordinatorLayout>
