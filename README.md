@@ -24,6 +24,8 @@ You can obtain a key from [themoviedb.org](https://www.themoviedb.org)
 
 [Wasabeef RecyclerView Animator](https://github.com/wasabeef/recyclerview-animators)
 
+## License
+
 ```
 Copyright 2016 Mudit Srivastava
 
