@@ -8,12 +8,13 @@ Created as a part of Udacity Android Developer Nanodegree
 ## API used
 The Movie Data Base (TMDb)
 
-__NOTE:__ Add your API key to ``` MainAcitivty ```as specified below in order to run the app.
+__NOTE:__ Add your API key to ``` Buil.gradle ``` file as specified below in order to run the app.
 ```
-@Override
-                    public void intercept(RequestFacade request) {
-                        request.addEncodedQueryParam("api_key", "write_your_key_here");
-                    }
+ buildTypes.each{
+        it.buildConfigField 'String', 'MOBDB_API_KEY',"\"write_your_key_here\""
+    }
+}
+
 ```
 
 You can obtain a key from [themoviedb.org](https://www.themoviedb.org)
