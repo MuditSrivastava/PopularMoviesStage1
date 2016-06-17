@@ -1,8 +1,6 @@
 # Popular Movies Stage 1
 Android App to show Most Popular and Top Rated Movies.
 
-Also displays Movies while using offline.
-
 Created as a part of Udacity Android Developer Nanodegree 
 
 ## API used
