@@ -22,8 +22,6 @@ You can obtain a key from [themoviedb.org](https://www.themoviedb.org)
 
 [Retrofit](http://square.github.io/retrofit/)
 
-[Wasabeef RecyclerView Animator](https://github.com/wasabeef/recyclerview-animators)
-
 
 
 
